@@ -2,6 +2,8 @@ const socket = io({ extraHeaders: { time: getTime() } });
 
 const button = document.getElementById("send-button");
 button.onclick = sendMessage;
+const exit = document.getElementById("exit");
+exit.onclick = () => window.location.href = "/";
 const chat = document.getElementById("chatbox");
 const username = getUsername(document.cookie);
 const input = document.getElementById("message-input");
