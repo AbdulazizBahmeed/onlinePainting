@@ -36,6 +36,7 @@ input {
   font-family: "Lato";
 }
 p{
+  display: flex;
   word-wrap: break-word;
   padding: 0.5% 1%;
 }
@@ -188,10 +189,11 @@ label{
 
 .msg-username {
   background: #546e7a;
+  margin: 0% 1%; 
   color: white;
   font-weight: bold;
   padding: 0.5% 0.5%;
-  font-size: 0.9rem;
+  font-size: 1rem;
   border-radius: 4px;
 }
 
@@ -203,6 +205,7 @@ label{
 
 .msg-outcome,
 .msg-outcome .msg-time {
+  flex-direction: row-reverse;
   background-color: rgb(255, 237, 230);
   color: orangered;
 }

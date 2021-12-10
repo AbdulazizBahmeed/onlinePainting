@@ -5,11 +5,12 @@ const app = express();
 const socket = require("socket.io");
 const port = process.env.PORT || 3000;
 
-//middleware
+//middlewares
 app.use(express.static("public"));
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
+  res.clearCookie("username");
   res.sendFile(path.join(__dirname, "public/homePage.html"));
 });
 
@@ -23,7 +24,7 @@ function loginRequired(req, res, next) {
 }
 app.get("/chatroom", loginRequired, (req, res) => {
   res.sendFile(path.join(__dirname, "public/chat.html"));
-})
+});
 
 const io = socket(
   app.listen(port, () => {
@@ -34,15 +35,18 @@ const io = socket(
 io.sockets.on("connection", (socket) => {
   const username = parseCookie(socket.handshake.headers.cookie).username;
 
-  const time = socket.handshake.headers.time;
-  const msg = `Entered tha chat!!!`;
-  const connectionData = { time: time, username: username, msg: msg };
-  socket.broadcast.emit("receive", connectionData);
+  socket.broadcast.emit("receive", {
+    time: socket.handshake.headers.time,
+    username: username,
+    msg: "Entered tha chat!!!",
+  });
 
   socket.on("disconnect", () => {
-    const disconnectionData = { time: time, username: username, msg: msg };
-    disconnectionData.msg = "disconnected from the chat!!!";
-    socket.broadcast.emit("receive", disconnectionData);
+    socket.broadcast.emit("receive", {
+      time: "!!!!!",
+      username: username,
+      msg: "disconnected from the chat!!!",
+    });
   });
 
   socket.on("send", (data) => {
@@ -55,4 +59,4 @@ function parseCookie(cookie) {
   cookie = cookie.replace(";", ",");
   cookie = JSON.parse(cookie);
   return cookie;
-};
+}
