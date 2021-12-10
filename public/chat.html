@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>bahmeed's chat room</title>
+    <meta name="description" content="bahmeed's chat room" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="menu">
+        <p id="welcome">Welcome to bahmeed's humble chat room &#128521;</p>
+        <button id="exit">Exit Chat</button>
+      </div>
+
+      <div id="chatbox"></div>
+      <div id="form">
+        <textarea
+          id="message-input"
+          placeholder="Enter your message"
+          dir="auto"
+        ></textarea>
+        <button id="send-button">send</button>
+      </div>
+    </div>
+  </body>
+  <script src="client.js"></script>
+</html>
