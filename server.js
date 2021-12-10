@@ -22,6 +22,7 @@ function loginRequired(req, res, next) {
   }
 }
 app.get("/chatroom", loginRequired, (req, res) => {
+  res.clearCookie("username");
   res.sendFile(path.join(__dirname, "public/chat.html"));
 });
 
