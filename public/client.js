@@ -7,10 +7,10 @@ exit.onclick = () => window.location.href = "/";
 const chat = document.getElementById("chatbox");
 const username = getUsername(document.cookie);
 const input = document.getElementById("message-input");
-input.oninput = () => (input.style.borderColor = "");
+input.oninput = () => input.style.borderColor = "";
 input.onkeyup = (e) => {
   if (e.code == "Enter" || e.code == "NumpadEnter") {
-    if (input.value.trim()) {
+    if (input.value.trim()!= "") {
       sendMessage();
       input.value = "";
     } else {
