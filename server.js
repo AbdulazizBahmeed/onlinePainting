@@ -24,7 +24,7 @@ function loginRequired(req, res, next) {
 app.get("/chatroom", loginRequired, (req, res) => {
   res.clearCookie("username");
   res.sendFile(path.join(__dirname, "public/chat.html"));
-});
+})
 
 const io = socket(
   app.listen(port, () => {
@@ -56,4 +56,4 @@ function parseCookie(cookie) {
   cookie = cookie.replace(";", ",");
   cookie = JSON.parse(cookie);
   return cookie;
-}
+};
