@@ -3,6 +3,9 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const app = express();
 const socket = require("socket.io");
+const { fork } = require("child_process");
+const controller = new AbortController();
+const { signal } = controller;
 const port = process.env.PORT || 3000;
 
 //middlewares
@@ -14,6 +17,14 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public/homePage.html"));
 });
 
+app.get("/computeFibo/:number", (req, res) => {
+   computeFibo(res, req.params.number);
+});
+
+app.get("/chatroom", loginRequired, (req, res) => {
+  res.sendFile(path.join(__dirname, "public/chat.html"));
+});
+
 function loginRequired(req, res, next) {
   const username = req.cookies.username;
   if (username) {
@@ -22,13 +33,10 @@ function loginRequired(req, res, next) {
     res.redirect("/");
   }
 }
-app.get("/chatroom", loginRequired, (req, res) => {
-  res.sendFile(path.join(__dirname, "public/chat.html"));
-});
 
 const io = socket(
   app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`chat room app listening at http://localhost:${port}`);
   })
 );
 
@@ -59,4 +67,20 @@ function parseCookie(cookie) {
   cookie = cookie.replace(";", ",");
   cookie = JSON.parse(cookie);
   return cookie;
+}
+
+ function computeFibo(res, n) {
+  const fiboProcess = fork(__dirname + "/fibo.js", [`${n}`], { signal });
+  
+   fiboProcess.on("error", (error) => {
+    console.log(error);
+  });
+
+   fiboProcess.on("message",(data)=>{
+    res.send({data})
+   });
+
+   fiboProcess.on("close", () => {
+    console.log(`im done ${n}`);
+  });
 }
