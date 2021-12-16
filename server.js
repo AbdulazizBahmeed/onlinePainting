@@ -69,11 +69,11 @@ function parseCookie(cookie) {
   return cookie;
 }
 
- function computeFibo(res, n) {
-  const fiboProcess = fork(__dirname + "/fibo.js", [`${n}`], { signal });
+ function computeFibo(res, number) {
+  const fiboProcess = fork(__dirname + "/fibo.js", [`${number}`], { signal });
   
    fiboProcess.on("error", (error) => {
-    console.log(error);
+    res.sendStatus(500)
   });
 
    fiboProcess.on("message",(data)=>{
@@ -81,6 +81,6 @@ function parseCookie(cookie) {
    });
 
    fiboProcess.on("close", () => {
-    console.log(`im done ${n}`);
+    console.log(`im done from ${number}`);
   });
 }

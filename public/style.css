@@ -2,6 +2,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-size: 16px;
 }
 
 body {
@@ -22,6 +23,7 @@ button {
   border-radius: 8px;
   padding: 0 2%;
   outline: none;
+  min-height: 25%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 button:hover {
@@ -45,25 +47,26 @@ p{
 #home-page {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
   height: 100%;
 }
 
-#chatroom {
+.card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2% 3%;
+  height: 60% ;
+  width: 30%;
+  padding: 0.5% 3%;
   border: 2px solid grey;
   border-radius: 8px;
   transition: 0.3s linear;
 }
 
-#chatroom:hover{
+.card:hover{
   transform: scale(1.1,1.1);
-  padding: 2.5% 3.5%;
   border: 4px solid #00c59a;
 }
 
@@ -80,29 +83,42 @@ h1{
   display: flex;
   width: 100%;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   justify-content: center;
 }
 
 label{
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-align: center;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
   font-weight: bold;
 }
 
 #name-input {
+  width: 20ch;
+}
+
+#fibo-input{
+  width: 8ch;
+  margin: 0;
+  /* appearance:none; */
+}
+#fibo-input::-webkit-outer-spin-button,
+#fibo-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+
+}
+.homepage-input{
   margin: auto;
   text-align: center;
-  overflow-y: scroll;
-  width: 25ch;
   min-height: 1.2rem;
   font-size: 1.3rem;
   border-radius: 8px;
   border: 2px solid grey;
 }
 
-#name-input:focus {
+.homepage-input:focus {
   outline: none;
   border: 2px solid #ff9800;
 }
@@ -112,15 +128,15 @@ label{
 }
 
 @keyframes erorr {
-  0%   {transform: translateX(1%);}
-  10%  {transform: translateX(-1%);}
-  20%  {transform: translateX(1%);}
-  30%  {transform: translateX(-1%);}
-  40%   {transform: translateX(1%);}
-  50%  {transform: translateX(-1%);}
-  60%  {transform: translateX(1%);}
-  70%  {transform: translateX(-1%);}
-  80%   {transform: translateX(1%);}
+  0%   {transform: translateX(2%);}
+  10%  {transform: translateX(-2%);}
+  20%  {transform: translateX(2%);}
+  30%  {transform: translateX(-2%);}
+  40%   {transform: translateX(2%);}
+  50%  {transform: translateX(-2%);}
+  60%  {transform: translateX(2%);}
+  70%  {transform: translateX(-2%);}
+  80%   {transform: translateX(2%);}
   100%  {transform: translateX(0%);}
 }
 
@@ -128,12 +144,29 @@ label{
   margin-top: 5%;
   font-size: 1.8rem;
   background: #ff9800;
-  height: 100%;
-  max-width: 50%;
+  height: 20%;
+  width: 50%;
   color: white;
   padding: 0% 3%;
 }
 
+#compute-button {
+  margin-top: 2%;
+  font-size: 1.8rem;
+  background: #ff9800;
+  height: 15%;
+  width: 60%;
+  color: white;
+  padding: 0% 3%;
+}
+
+#fibo-result {
+  padding-top: 2%;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color:dodgerblue;
+}
 /***********now the chatpage css************/
 #wrapper {
   width: 85%;
@@ -148,8 +181,9 @@ label{
 }
 
 #welcome {
+  /* display: flex; */
   padding: 1% 0%;
-  font-size: 120%;
+  font-size: 2rem;
   font-weight: bold;
   max-width: 60%;
 }
@@ -256,8 +290,38 @@ label{
     width: 95%;
   }
 
+  #home-page{
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 30%;
+    width: 80%;
+  }
+  #fibo {
+    height:40%;
+    margin-top: 15%;
+  }
+
+  h1{
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  #compute-button, #enter-button{
+    margin: 0;
+  }
+
+  label {
+    font-size: 1.2rem;
+  }
+
   #welcome {
-    font-size: 1.4rem;
+    font-size: 135%;
   }
 
   #exit {
