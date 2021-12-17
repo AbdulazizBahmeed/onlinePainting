@@ -5,7 +5,8 @@ nameInput.addEventListener("input", () => {
 });
 
 nameInput.onkeydown = (e) => {
-  if (e.code == "Enter" || e.code == "NumpadEnter") enter.onclick();
+  console.log(e);
+  if (e.code == "Enter" || e.code == "NumpadEnter" || e.keyCode == "13") enter.onclick();
 };
 
 const enter = document.getElementById("enter-button");
@@ -33,14 +34,14 @@ fiboInput.addEventListener("input", () => {
 });
 
 fiboInput.onkeydown = (e) => {
-  if (e.code == "Enter" || e.code == "NumpadEnter") compute.onclick();
+  if (e.code == "Enter" || e.code == "NumpadEnter" || e.keyCode == "13") compute.onclick();
 };
 
 const fiboResult = document.getElementById("fibo-result");
 const compute = document.getElementById("compute-button");
 compute.onclick = () => {
   const value = fiboInput.value;
-  if ((value !== "") & (value >= 0) & (value <= 99)) {
+  if ((value !== "") & (value >= 0) & (value <= 50)) {
     const result = computeFibo(value);
     fiboInput.value = "";
   } else {
@@ -55,14 +56,14 @@ compute.onclick = () => {
 };
 
 async function computeFibo(number) {
+  fiboResult.style.color = "dodgerblue";
   fiboResult.innerText = "Computing...";
   const response = await fetch(`/computeFibo/${number}`);
   if (response.ok) {
     const result = await response.json();
     setTimeout(() => {
-      fiboResult.style.color = "dodgerblue";
       fiboResult.innerText = result.data;
-    }, 300);
+    }, 400);
   } else {
     fiboResult.style.color = "red";
     fiboResult.innerText = "server Error";

@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/computeFibo/:number", (req, res) => {
-   computeFibo(res, req.params.number);
+  computeFibo(res, req.params.number);
 });
 
 app.get("/chatroom", loginRequired, (req, res) => {
@@ -69,18 +69,19 @@ function parseCookie(cookie) {
   return cookie;
 }
 
- function computeFibo(res, number) {
+
+function computeFibo(res, number) {
   const fiboProcess = fork(__dirname + "/fibo.js", [`${number}`], { signal });
-  
-   fiboProcess.on("error", (error) => {
-    res.sendStatus(500)
+
+  fiboProcess.on("error", (error) => {
+    res.sendStatus(500);
   });
 
-   fiboProcess.on("message",(data)=>{
-    res.send({data})
-   });
+  fiboProcess.on("message", (data) => {
+    res.send({ data });
+  });
 
-   fiboProcess.on("close", () => {
+  fiboProcess.on("close", () => {
     console.log(`im done from ${number}`);
   });
 }
