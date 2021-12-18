@@ -1,19 +1,21 @@
 const express = require("express");
+const app = express();
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const app = express();
 const socket = require("socket.io");
 const { fork } = require("child_process");
 const controller = new AbortController();
 const { signal } = controller;
 const port = process.env.PORT || 3000;
-
+const io = socket(app.listen(port, () => {
+    console.log(`app listening at http://localhost:${port}`);
+  })
+);
 //middlewares
 app.use(express.static("public"));
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
-  res.clearCookie("username");
   res.sendFile(path.join(__dirname, "public/homePage.html"));
 });
 
@@ -33,12 +35,6 @@ function loginRequired(req, res, next) {
     res.redirect("/");
   }
 }
-
-const io = socket(
-  app.listen(port, () => {
-    console.log(`chat room app listening at http://localhost:${port}`);
-  })
-);
 
 io.sockets.on("connection", (socket) => {
   const username = parseCookie(socket.handshake.headers.cookie).username;

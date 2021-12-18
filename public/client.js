@@ -101,7 +101,7 @@ function sendMessage() {
     input.value = "";
     chat.scrollTo(0, chat.scrollHeight);
   } else {
-    //we notify the user if gonna send an empty message
+    //we notify the user that the message is empty
     input.style.borderColor = "red";
     input.className = "invalid-input";
     setTimeout(() => {

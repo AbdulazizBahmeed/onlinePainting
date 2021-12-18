@@ -1,4 +1,3 @@
-"use strict";
 const n = parseInt(process.argv[2]);
 
 process.send(fibo(n));
