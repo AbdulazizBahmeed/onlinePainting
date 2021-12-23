@@ -24,6 +24,7 @@ enter.onclick = () => {
     setTimeout(() => {
       nameInput.classList = "homepage-input";
     }, 500);
+    nameInput.focus();
   }
 };
 
@@ -52,6 +53,7 @@ compute.onclick = () => {
     setTimeout(() => {
       fiboInput.classList = "homepage-input";
     }, 500);
+    fiboInput.focus();
   }
 };
 
