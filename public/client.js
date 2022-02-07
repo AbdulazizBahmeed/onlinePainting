@@ -14,6 +14,7 @@ const chat = document.getElementById("chatbox");
 //and it is the same as pressing the send button
 //this is just for UX (user experience)
 const input = document.getElementById("message-input");
+input.focus();
 input.oninput = () => (input.style.borderColor = "");
 input.onkeyup = (e) => {
   if (e.code == "Enter" || e.code == "NumpadEnter") {
@@ -74,7 +75,7 @@ function createMsg(data) {
   const spanUsername = document.createElement("span");
   spanUsername.className = "msg-username";
   spanUsername.textContent =
-    data.username == username ? ":"+data.username : data.username+":";
+    data.username == username ? ":" + data.username : data.username + ":";
   msg.appendChild(spanUsername);
 
   const spanMsg = document.createElement("span");
@@ -100,6 +101,7 @@ function sendMessage() {
     socket.emit("send", data);
     input.value = "";
     chat.scrollTo(0, chat.scrollHeight);
+    input.focus();
   } else {
     //we notify the user that the message is empty
     input.style.borderColor = "red";
@@ -107,5 +109,6 @@ function sendMessage() {
     setTimeout(() => {
       input.className = "";
     }, 500);
+    input.focus();
   }
 }
