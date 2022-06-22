@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const socket = require("socket.io");
 const { fork } = require("child_process");
+const { dirname } = require("path");
 const controller = new AbortController();
 const { signal } = controller;
 const port = process.env.PORT || 3000;
@@ -12,11 +13,11 @@ const io = socket(app.listen(port, () => {
   })
 );
 //middlewares
-// app.use(express.static("public"));
+app.use(express.static("public"));
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
-  res.sendFile("./public/homePage.html");
+  res.sendFile(path.join(__dirname,"public/homePage.html"));
 });
 
 app.get("/computeFibo/:number", (req, res) => {
