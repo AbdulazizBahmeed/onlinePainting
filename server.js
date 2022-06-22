@@ -12,11 +12,11 @@ const io = socket(app.listen(port, () => {
   })
 );
 //middlewares
-app.use(express.static("public"));
+// app.use(express.static("public"));
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/homePage.html"));
+  res.sendFile("./public/homePage.html");
 });
 
 app.get("/computeFibo/:number", (req, res) => {
