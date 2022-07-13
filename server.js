@@ -30,6 +30,7 @@ app.get("/chatroom", loginRequired, (req, res) => {
 
 function loginRequired(req, res, next) {
   const username = req.cookies.username;
+  // res.cookie("username","ahmedddd");
   if (username) {
     next();
   } else {
