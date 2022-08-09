@@ -16,6 +16,10 @@ const io = socket(app.listen(port, () => {
 app.use(express.static("public"));
 app.use(cookieParser());
 
+app.get("/a", (req,res)=>{
+  res.send(req.ip);
+});
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname,"public/homePage.html"));
 });
