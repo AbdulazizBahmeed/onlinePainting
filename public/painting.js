@@ -32,6 +32,7 @@ function setup() {
   const myCanvas = createCanvas(sketchWidth, sketchHeight);
   myCanvas.parent("canvas");
   background(255);
+  cursor("cursor.png")
 }
 
 function mouseDragged() {
