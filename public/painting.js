@@ -21,8 +21,8 @@ socket.on("join", (data)=>{
   console.log(data.users);
 })
 
-socket.on("left", (data)=>{
-  console.log(data.users);
+socket.on("left", ()=>{
+  console.log("hello");
 })
 
 let sketchWidth = document.getElementById("canvas").offsetWidth;
@@ -44,8 +44,6 @@ function mouseDragged() {
     x2: pmouseX,
     y2: pmouseY
   };
-  console.log(pmouseX, data.x2);
-  console.log();
   line(data.x1, data.y1, data.x2, data.y2);
   socket.emit("send", data);
 }

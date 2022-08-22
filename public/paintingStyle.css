@@ -16,18 +16,20 @@ body {
   height: 100vh;
   background-color: #ff3cac;
   background: -moz-linear-gradient(
-    225deg,
-    #ff3cac 0%,
-    #784ba0 50%,
-    #2b86c5 100%
+    45deg,
+    rgba(0, 34, 83, 1) 0%,
+    rgba(2, 136, 209, 1) 80%
   );
   background: -webkit-linear-gradient(
-    225deg,
-    #ff3cac 0%,
-    #784ba0 50%,
-    #2b86c5 100%
+    45deg,
+    rgba(0, 34, 83, 1) 0%,
+    rgba(2, 136, 209, 1) 80%
   );
-  background: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2b86c5 100%);
+  background: linear-gradient(
+    45deg,
+    rgba(0, 34, 83, 1) 0%,
+    rgba(2, 136, 209, 1) 80%
+  );
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -55,36 +57,42 @@ ul {
   margin: 1%;
 }
 
-.selected{
+.selected {
   border: white solid 3px;
   animation: selected 1000ms linear infinite;
 }
 
 @keyframes selected {
-  0% {border-width: 4px;}
-  50% {border-width: 1px;}
-  100% {border-width: 4px;}
+  0% {
+    border-width: 4px;
+  }
+  50% {
+    border-width: 1px;
+  }
+  100% {
+    border-width: 4px;
+  }
 }
 
-#red{
+#red {
   background-color: red;
 }
-#blue{
+#blue {
   background-color: blue;
 }
-#green{
+#green {
   background-color: green;
 }
-#yellow{
+#yellow {
   background-color: yellow;
 }
-#orange{
+#orange {
   background-color: orange;
 }
-#purple{
+#purple {
   background-color: purple;
 }
-#black{
+#black {
   background-color: black;
 }
 
