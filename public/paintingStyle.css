@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato";
+  font-weight: 300;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ff3cac;
+  background: -moz-linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
+  background: -webkit-linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
+  background: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2b86c5 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+#toolsBox {
+  display: flex;
+  justify-content: center;
+  background-color: lightgray;
+  border-radius: 50px;
+  border: black dashed 2px;
+  width: 330px;
+  height: 10%;
+}
+
+.color {
+  border-radius: 50px;
+  width: 2.5em;
+  height: 2.2em;
+  margin: 1%;
+}
+
+.selected{
+  border: white solid 3px;
+  animation: selected 1000ms linear infinite;
+}
+
+@keyframes selected {
+  0% {border-width: 4px;}
+  50% {border-width: 1px;}
+  100% {border-width: 4px;}
+}
+
+#red{
+  background-color: red;
+}
+#blue{
+  background-color: blue;
+}
+#green{
+  background-color: green;
+}
+#yellow{
+  background-color: yellow;
+}
+#orange{
+  background-color: orange;
+}
+#purple{
+  background-color: purple;
+}
+#black{
+  background-color: black;
+}
+
+#canvas {
+  background-color: lightgray;
+  border-radius: 100px;
+  overflow: hidden;
+  width: 330px;
+  height: 400px;
+  touch-action: none;
+  border: black solid 5px;
+}
