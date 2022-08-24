@@ -102,8 +102,6 @@ ul {
 
 #canvas {
   background-color: lightgray;
-  border-radius: 100px;
-  overflow: hidden;
   width: 330px;
   height: 400px;
   touch-action: none;
