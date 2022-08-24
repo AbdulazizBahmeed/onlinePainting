@@ -28,7 +28,7 @@ let sketchWidth = document.getElementById("canvas").offsetWidth;
 let sketchHeight = document.getElementById("canvas").offsetHeight;
 
 function setup() {
-  const myCanvas = createCanvas(sketchWidth, sketchHeight);
+  const myCanvas = createCanvas(sketchWidth-10, sketchHeight-10);
   myCanvas.parent("canvas");
   background(255);
   cursor("cursor.png");

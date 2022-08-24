@@ -101,6 +101,7 @@ ul {
 }
 
 #canvas {
+  /* box-sizing: content-box; */
   background-color: lightgray;
   width: 330px;
   height: 400px;
